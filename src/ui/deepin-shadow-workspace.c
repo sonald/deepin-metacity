@@ -175,6 +175,10 @@ static void place_window(DeepinShadowWorkspace* self,
     g_signal_connect(G_OBJECT(clone), "transition-finished", 
             (GCallback)on_window_placed, self);
 
+    meta_deepin_cloned_widget_set_scale(clone, fscale, fscale);
+    on_window_placed(clone, self);
+    return;
+
     if (self->priv->dynamic) {
         meta_deepin_cloned_widget_set_scale(clone, 1.0, 1.0);
         meta_deepin_cloned_widget_push_state(clone);
